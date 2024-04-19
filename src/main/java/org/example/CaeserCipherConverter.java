@@ -1,3 +1,13 @@
+/** Project: Group 6 Team Project
+ * Purpose Details: System Integration Using RabbitMQ, JSON, and CaeserCipher Encryption
+ * Course: IST 242
+ * Author: Felix Naroditskiy
+ * Date Developed: 4/19/2024
+ * Last Date Changed: 4/19/2024
+ * Rev: 1.0
+
+ */
+
 package org.example;
 
 public class CaeserCipherConverter {
