@@ -49,9 +49,9 @@ public class RabbitGet {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             // Deserialize the JSON string to a Pizza object
-            Pizza pizza = gson.fromJson(message, Pizza.class);
+            Customer customer = gson.fromJson(message, Customer.class);
             // Use the displayPizzaDetails method to print pizza details
-            pizza.displayPizzaDetails();
+            customer.displayCustomerDetails();
         };
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
     }

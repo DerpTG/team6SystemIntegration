@@ -1,5 +1,5 @@
-/** Project: Lab 4 Systems Integration Pizza Shop
- * Purpose Details: System Integration Using Flat Files, RabbitMQ, and Web Service/JSON
+/** Project: Group 6 Team Project
+ * Purpose Details: System Integration Using RabbitMQ, JSON, and CaeserCipher Encryption
  * Course: IST 242
  * Author: Felix Naroditskiy
  * Date Developed: 4/19/2024
