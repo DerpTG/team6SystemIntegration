@@ -20,16 +20,15 @@ public class RabbitSend {
      * @param QUEUE_NAME The name of the RabbitMQ queue to which pizza data messages are sent.
      * @param pizzaJson The JSON string representation of a pizza object to be sent to the queue.
      */
-    private final static String QUEUE_NAME = "pizzaQueue";
-    private String pizzaJson;
-
+    private final static String QUEUE_NAME = "customerDetailsQueue";
+    private String customerJson;
     /**
      * Constructs a new PizzaRabbitSend instance with the specified pizza JSON string.
      *
-     * @param pizzaJson The JSON string representation of a pizza object.
+     * @param customerJson The JSON string representation of a pizza object.
      */
-    public RabbitSend(String pizzaJson) {
-        this.pizzaJson = pizzaJson;
+    public RabbitSend(String customerJson) {
+        this.customerJson = customerJson;
     }
 
     /**
@@ -44,8 +43,8 @@ public class RabbitSend {
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            channel.basicPublish("", QUEUE_NAME, null, pizzaJson.getBytes());
-            System.out.println(" [x] Sent Pizza JSON: '" + pizzaJson + "'");
+            channel.basicPublish("", QUEUE_NAME, null, customerJson.getBytes());
+            System.out.println(" [x] Sent Customer JSON: '" + customerJson + "'");
         }
     }
 
@@ -54,13 +53,13 @@ public class RabbitSend {
      *
      * @return The current pizza JSON string.
      */
-    public String getPizzaJson() {return pizzaJson;}
+    public String getPizzaJson() {return customerJson;}
 
     /**
      * Updates the pizza JSON string.
      *
      * @param pizzaJson The new JSON string representation of a pizza object.
      */
-    public void setPizzaJson(String pizzaJson) {this.pizzaJson = pizzaJson;}
+    public void setPizzaJson(String customerJson) {this.customerJson = customerJson;}
 }
 

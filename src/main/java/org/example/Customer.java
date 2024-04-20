@@ -10,6 +10,9 @@
 
 package org.example;
 
+
+import com.google.gson.Gson;
+
 /**
  * Represents a customer entity.
  */
@@ -59,4 +62,23 @@ public class Customer {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    /**
+     * Get Json string of the customer
+     * @return Json string of the customer
+     */
+    public String toJSON(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    /**
+     * Get customer object from Json string
+     * @param json Json string of the customer
+     */
+    public static Customer fromJSON(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, Customer.class);
+    }
+
 }

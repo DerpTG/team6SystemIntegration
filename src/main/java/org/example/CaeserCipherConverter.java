@@ -30,21 +30,20 @@ public class CaeserCipherConverter {
         return encryptedText.toString();
     }
 
-    public static String decrypt(String plaintext, int shift) {
-        StringBuilder encryptedText = new StringBuilder();
+    public static String decrypt(String ciphertext, int shift) {
+        StringBuilder decryptedText = new StringBuilder();
 
-        for (char character : plaintext.toCharArray()) {
+        for (char character : ciphertext.toCharArray()) {
             if (Character.isLetter(character)) {
                 char base = Character.isLowerCase(character) ? 'a' : 'A';
                 int originalAlphabetPosition = character - base;
-                int newAlphabetPosition = (originalAlphabetPosition - shift) % 26;
+                int newAlphabetPosition = (originalAlphabetPosition - shift + 26) % 26;
                 char newCharacter = (char) (base + newAlphabetPosition);
-                encryptedText.append(newCharacter);
+                decryptedText.append(newCharacter);
             } else {
-                encryptedText.append(character);
+                decryptedText.append(character);
             }
         }
-
-        return encryptedText.toString();
+        return decryptedText.toString();
     }
 }

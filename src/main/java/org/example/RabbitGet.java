@@ -24,8 +24,7 @@ public class RabbitGet {
      * @param Gson instance for converting JSON strings into Pizza objects.
      * @param channel Channel for communicating with the RabbitMQ server.
      */
-    private final static String QUEUE_NAME = "pizzaQueue";
-    private final Gson gson = new Gson();
+    private final static String QUEUE_NAME = "customerDetailsQueue";
     private Connection connection;
     private Channel channel;
 
@@ -48,8 +47,8 @@ public class RabbitGet {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            // Deserialize the JSON string to a Pizza object
-            Customer customer = gson.fromJson(message, Customer.class);
+            // Deserialize the JSON string to Customer object
+            Customer customer = Customer.fromJSON(message);
             // Use the displayPizzaDetails method to print pizza details
             customer.displayCustomerDetails();
         };
