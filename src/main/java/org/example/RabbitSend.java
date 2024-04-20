@@ -17,22 +17,22 @@ import com.rabbitmq.client.Channel;
 public class RabbitSend {
 
     /**
-     * @param QUEUE_NAME The name of the RabbitMQ queue to which pizza data messages are sent.
-     * @param pizzaJson The JSON string representation of a pizza object to be sent to the queue.
+     * @param QUEUE_NAME The name of the RabbitMQ queue to which customer data messages are sent.
+     * @param customerJson The JSON string representation of a customer object to be sent to the queue.
      */
     private final static String QUEUE_NAME = "customerDetailsQueue";
     private String customerJson;
     /**
-     * Constructs a new PizzaRabbitSend instance with the specified pizza JSON string.
+     * Constructs a new CustomerRabbitSend instance with the specified Customer JSON string.
      *
-     * @param customerJson The JSON string representation of a pizza object.
+     * @param customerJson The JSON string representation of a customer object.
      */
     public RabbitSend(String customerJson) {
         this.customerJson = customerJson;
     }
 
     /**
-     * Sends the pizza JSON string to the RabbitMQ queue.
+     * Sends the Customer JSON string to the RabbitMQ queue.
      *
      * @throws Exception If there is an issue establishing a connection to RabbitMQ,
      *                   creating a channel, declaring a queue, or publishing a message.
@@ -49,17 +49,17 @@ public class RabbitSend {
     }
 
     /**
-     * Returns the current pizza JSON string.
+     * Returns the current Customer JSON string.
      *
-     * @return The current pizza JSON string.
+     * @return The current Customer JSON string.
      */
-    public String getPizzaJson() {return customerJson;}
+    public String getCustomerJson() {return customerJson;}
 
     /**
-     * Updates the pizza JSON string.
+     * Updates the customer JSON string.
      *
-     * @param pizzaJson The new JSON string representation of a pizza object.
+     * @param customerJson The new JSON string representation of a Customer object.
      */
-    public void setPizzaJson(String customerJson) {this.customerJson = customerJson;}
+    public void setCustomerJson(String customerJson) {this.customerJson = customerJson;}
 }
 

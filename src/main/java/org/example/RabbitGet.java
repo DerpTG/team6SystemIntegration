@@ -19,9 +19,9 @@ import com.rabbitmq.client.DeliverCallback;
 public class RabbitGet {
 
     /**
-     * @param QUEUE_NAME The name of the RabbitMQ queue from which pizza data messages are received.
-     * @param gson Gson instance for converting JSON strings into Pizza objects.
-     * @param Gson instance for converting JSON strings into Pizza objects.
+     * @param QUEUE_NAME The name of the RabbitMQ queue from which customer data messages are received.
+     * @param gson Gson instance for converting JSON strings into Customer objects.
+     * @param Gson instance for converting JSON strings into Customer objects.
      * @param channel Channel for communicating with the RabbitMQ server.
      */
     private final static String QUEUE_NAME = "customerDetailsQueue";
@@ -30,7 +30,7 @@ public class RabbitGet {
 
     /**
      * Initializes and starts listening for messages on the specified queue. Upon receiving a message,
-     * it deserializes the JSON into a Pizza object and displays its details.
+     * it deserializes the JSON into a Customer object and displays its details.
      *
      * @throws Exception If there is an issue establishing a connection to RabbitMQ, creating a channel,
      * or declaring a queue.
@@ -49,7 +49,7 @@ public class RabbitGet {
             String message = new String(delivery.getBody(), "UTF-8");
             // Deserialize the JSON string to Customer object
             Customer customer = Customer.fromJSON(message);
-            // Use the displayPizzaDetails method to print pizza details
+            // Use the displayCustomerDetails method to print Customer details
             customer.displayCustomerDetails();
         };
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
