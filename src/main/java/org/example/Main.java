@@ -34,5 +34,12 @@ public class Main {
         // Get Customer toString from deserializedCustomer
         System.out.println("\nCustomer toString: " + deserializedCustomer.toString());
 
+        // Send the encrypted customer JSON string to the RabbitMQ queue
+        RabbitSend rabbitSend = new RabbitSend(encryptedCustomerJson);
+        try {
+            rabbitSend.sendToQueue();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

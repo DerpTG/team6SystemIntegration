@@ -46,9 +46,11 @@ public class RabbitGet {
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
+            String encryptedMessage = new String(delivery.getBody(), "UTF-8");
+            // Decrypt the message using the CaeserCipherConverter
+            String decryptedMessage = CaeserCipherConverter.decrypt(encryptedMessage, 3);
             // Deserialize the JSON string to Customer object
-            Customer customer = Customer.fromJSON(message);
+            Customer customer = Customer.fromJSON(decryptedMessage);
             // Use the displayCustomerDetails method to print Customer details
             customer.displayCustomerDetails();
         };
