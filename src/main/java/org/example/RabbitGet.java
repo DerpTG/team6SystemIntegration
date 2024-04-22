@@ -69,5 +69,14 @@ public class RabbitGet {
             connection.close();
         }
     }
+
+    public static void main(String[] args) {
+        RabbitGet rabbitGet = new RabbitGet();
+        try {
+            rabbitGet.startReceiving();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 

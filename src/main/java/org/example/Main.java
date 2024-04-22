@@ -12,10 +12,28 @@
 
 package org.example;
 
+import java.io.*;
+import java.util.Scanner;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Customer Creation:");
+        System.out.println("Enter ID of the Customer:");
+        String id = scanner.nextLine();
+        System.out.println("Enter First Name of the Customer:");
+        String first = scanner.nextLine();
+        System.out.println("Enter Last Name of the Customer:");
+        String last = scanner.nextLine();
+        System.out.println("Enter City:");
+        String city = scanner.nextLine();
+        System.out.println("Enter Customer Email:");
+        String email = scanner.nextLine();
+
         // Create a new customer object
-        Customer customer = new Customer("1", "John", "Doe", "New York", "johndoe@psu.edu");
+        Customer customer = new Customer(id, first, last, city, email);
 
         // Check Serialize the customer object to JSON
         String customerJson = customer.toJSON();
