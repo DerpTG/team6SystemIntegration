@@ -24,10 +24,10 @@ public class Main {
         Customer deserializedCustomer = Customer.fromJSON(customerJson);
         System.out.println("Deserialized Customer:" + deserializedCustomer);
         // Check Encrypt the customer JSON string
-        String encryptedCustomerJson = CaeserCipherConverter.encrypt(customerJson, 3);
+        String encryptedCustomerJson = AES.encrypt(customerJson);
         System.out.println("\nEncrypted Customer JSON: " + encryptedCustomerJson);
         // Check Decrypt the encrypted customer JSON string
-        String decryptedCustomerJson = CaeserCipherConverter.decrypt(encryptedCustomerJson, 3);
+        String decryptedCustomerJson = AES.decrypt(encryptedCustomerJson);
         System.out.println("Decrypted Customer JSON: " + decryptedCustomerJson);
 
         // Get Customer toString from deserializedCustomer
