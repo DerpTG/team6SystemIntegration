@@ -7,7 +7,7 @@
  * Rev: 1.0
  */
 
-// This is what the json will look like. We will be using CaeserCipher converter to encrypt and decrypt the json payload (which will be a customer order).
+// This is what the json will look like. We will be using AES converter to encrypt and decrypt the json payload (which will be a customer order).
 // Order of Operations: User input --> encryption of details --> json serialization --> sending message via rabbit --> json deserialization ==> decryption of details --> printing details
 
 package org.example;

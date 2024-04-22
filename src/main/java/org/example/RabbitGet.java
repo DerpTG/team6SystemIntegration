@@ -46,8 +46,8 @@ public class RabbitGet {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String encryptedMessage = new String(delivery.getBody(), "UTF-8");
-            // Decrypt the message using the CaeserCipherConverter
-            String decryptedMessage = CaeserCipherConverter.decrypt(encryptedMessage, 3);
+            // Decrypt the message using the AES
+            String decryptedMessage = AES.decrypt(encryptedMessage);
             // Deserialize the JSON string to Customer object
             Customer customer = Customer.fromJSON(decryptedMessage);
             // Use the displayCustomerDetails method to print Customer details
