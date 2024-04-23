@@ -1,5 +1,5 @@
 /** Project: Group 6 Team Project
- * Purpose Details: System Integration Using RabbitMQ, JSON, and CaeserCipher Encryption
+ * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
