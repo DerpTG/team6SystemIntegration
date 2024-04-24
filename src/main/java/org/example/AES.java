@@ -1,5 +1,5 @@
 /** Project: Group 6 Team Project
- * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
+ * Purpose Details: This project focuses on system integration utilizing RabbitMQ for messaging, JSON for data interchange, and AES encryption for securing sensitive information.
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
@@ -25,6 +25,12 @@ public class AES {
         return new SecretKeySpec(decodedKey, "AES");
     }
 
+    /**
+     * Encrypts a string using AES encryption.
+     *
+     * @param strToEncrypt The string to be encrypted.
+     * @return The encrypted string.
+     */
     public static String encrypt(String strToEncrypt) {
         try {
             // Get the encryption key
@@ -38,6 +44,12 @@ public class AES {
         }
     }
 
+    /**
+     * Decrypts an AES encrypted string.
+     *
+     * @param strToDecrypt The string to be decrypted.
+     * @return The decrypted string.
+     */
     public static String decrypt(String strToDecrypt) {
         try {
             // Get the encryption key

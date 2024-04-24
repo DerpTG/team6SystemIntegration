@@ -1,10 +1,10 @@
 /** Project: Group 6 Team Project
- * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
+ * Purpose Details: This project focuses on system integration utilizing RabbitMQ for messaging, JSON for data interchange, and AES encryption for securing sensitive information.
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/22/2024
- * Rev: 1.0
+ * Last Date Changed: 4/23/2024
+ * Rev: 1.1
  */
 
 package org.example;
@@ -18,10 +18,7 @@ import com.rabbitmq.client.DeliverCallback;
 public class RabbitGet {
 
     /**
-     * @param QUEUE_NAME The name of the RabbitMQ queue from which customer data messages are received.
-     * @param gson Gson instance for converting JSON strings into Customer objects.
-     * @param Gson instance for converting JSON strings into Customer objects.
-     * @param channel Channel for communicating with the RabbitMQ server.
+     * The name of the RabbitMQ queue from which customer data messages are received.
      */
     private final static String QUEUE_NAME = "customerDetailsQueue";
     private Connection connection;
@@ -70,6 +67,10 @@ public class RabbitGet {
         }
     }
 
+    /**
+     * Main method to start receiving messages from RabbitMQ.
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         RabbitGet rabbitGet = new RabbitGet();
         try {
@@ -79,4 +80,3 @@ public class RabbitGet {
         }
     }
 }
-

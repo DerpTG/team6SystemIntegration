@@ -3,8 +3,8 @@
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/22/2024
- * Rev: 1.0
+ * Last Date Changed: 4/23/2024
+ * Rev: 1.1
  */
 
 package org.example;
@@ -16,13 +16,13 @@ import com.rabbitmq.client.Channel;
 public class RabbitSend {
 
     /**
-     * @param QUEUE_NAME The name of the RabbitMQ queue to which customer data messages are sent.
-     * @param customerJson The JSON string representation of a customer object to be sent to the queue.
+     * The name of the RabbitMQ queue to which customer data messages are sent.
      */
     private final static String QUEUE_NAME = "customerDetailsQueue";
     private String customerJson;
+
     /**
-     * Constructs a new CustomerRabbitSend instance with the specified Customer JSON string.
+     * Constructs a new RabbitSend instance with the specified Customer JSON string.
      *
      * @param customerJson The JSON string representation of a customer object.
      */
@@ -52,13 +52,16 @@ public class RabbitSend {
      *
      * @return The current Customer JSON string.
      */
-    public String getCustomerJson() {return customerJson;}
+    public String getCustomerJson() {
+        return customerJson;
+    }
 
     /**
      * Updates the customer JSON string.
      *
      * @param customerJson The new JSON string representation of a Customer object.
      */
-    public void setCustomerJson(String customerJson) {this.customerJson = customerJson;}
+    public void setCustomerJson(String customerJson) {
+        this.customerJson = customerJson;
+    }
 }
-

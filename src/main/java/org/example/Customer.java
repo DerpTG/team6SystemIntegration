@@ -1,5 +1,5 @@
 /** Project: Group 6 Team Project
- * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
+ * Purpose Details: This project focuses on system integration utilizing RabbitMQ for messaging, JSON for data interchange, and AES encryption for securing sensitive information.
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
@@ -8,7 +8,6 @@
  */
 
 package org.example;
-
 
 import com.google.gson.Gson;
 
@@ -38,6 +37,9 @@ public class Customer {
         this.email = email;
     }
 
+    /**
+     * Display customer details.
+     */
     public void displayCustomerDetails() {
         System.out.println("Customer Details:");
         System.out.println("ID: " + id);
@@ -54,7 +56,7 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", city='" + city + '\'' +
@@ -63,8 +65,8 @@ public class Customer {
     }
 
     /**
-     * Get Json string of the customer
-     * @return Json string of the customer
+     * Converts the customer object to a JSON string.
+     * @return JSON string representing the customer object.
      */
     public String toJSON(){
         Gson gson = new Gson();
@@ -72,12 +74,12 @@ public class Customer {
     }
 
     /**
-     * Get customer object from Json string
-     * @param json Json string of the customer
+     * Constructs a customer object from a JSON string.
+     * @param json JSON string representing the customer object.
+     * @return Customer object constructed from the JSON string.
      */
     public static Customer fromJSON(String json) {
         Gson gson = new Gson();
         return gson.fromJson(json, Customer.class);
     }
-
 }
