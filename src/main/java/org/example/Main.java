@@ -1,10 +1,11 @@
-/** Project: Group 6 Team Project
+/**
+ * Project: Group 6 Team Project
  * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
  * Last Date Changed: 4/22/2024
- * Rev: 1.2
+ * Rev: 1.0
  */
 
 package org.example;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * Entry point of the application.
+     * The main method is the entry point of the application.
      *
      * @param args Command-line arguments.
      */
@@ -23,29 +24,29 @@ public class Main {
 
         System.out.println("Customer Creation:");
         System.out.println("Enter ID of the Customer:");
-        String id = scanner.nextLine();
+        String id = scanner.nextLine(); // ID of the customer
         System.out.println("Enter First Name of the Customer:");
-        String first = scanner.nextLine();
+        String first = scanner.nextLine(); // First name of the customer
         System.out.println("Enter Last Name of the Customer:");
-        String last = scanner.nextLine();
+        String last = scanner.nextLine(); // Last name of the customer
         System.out.println("Enter City:");
-        String city = scanner.nextLine();
+        String city = scanner.nextLine(); // City of the customer
         System.out.println("Enter Customer Email:");
-        String email = scanner.nextLine();
+        String email = scanner.nextLine(); // Email of the customer
 
         // Create a new customer object
         Customer customer = new Customer(id, first, last, city, email);
 
-        // Check Serialize the customer object to JSON
+        // Serialize the customer object to JSON
         String customerJson = customer.toJSON();
         System.out.println("\nCustomer JSON: " + customerJson);
-        // Check Deserialize the JSON string to a Customer object
+        // Deserialize the JSON string to a Customer object
         Customer deserializedCustomer = Customer.fromJSON(customerJson);
         System.out.println("Deserialized Customer:" + deserializedCustomer);
-        // Check Encrypt the customer JSON string
+        // Encrypt the customer JSON string
         String encryptedCustomerJson = AES.encrypt(customerJson);
         System.out.println("\nEncrypted Customer JSON: " + encryptedCustomerJson);
-        // Check Decrypt the encrypted customer JSON string
+        // Decrypt the encrypted customer JSON string
         String decryptedCustomerJson = AES.decrypt(encryptedCustomerJson);
         System.out.println("Decrypted Customer JSON: " + decryptedCustomerJson);
 
