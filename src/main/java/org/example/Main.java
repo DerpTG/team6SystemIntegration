@@ -1,24 +1,26 @@
 /** Project: Group 6 Team Project
- * Purpose Details: This project focuses on system integration utilizing RabbitMQ for messaging, JSON for data interchange, and AES encryption for securing sensitive information. The main goal is to create a system where user input (customer details) is encrypted, serialized to JSON, sent via RabbitMQ, then deserialized, decrypted, and processed at the receiving end.
+ * Purpose Details: System Integration Using RabbitMQ, JSON, and AES Encryption
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/23/2024
- * Rev: 1.1
+ * Last Date Changed: 4/22/2024
+ * Rev: 1.2
  */
-
-// This is what the json will look like. We will be using AES converter to encrypt and decrypt the json payload (which will be a customer order).
-// Order of Operations: User input --> encryption of details --> json serialization --> sending message via rabbit --> json deserialization ==> decryption of details --> printing details
 
 package org.example;
 
 import java.util.Scanner;
 
 public class Main {
+
+    /**
+     * Entry point of the application.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Prompt user for customer details
         System.out.println("Customer Creation:");
         System.out.println("Enter ID of the Customer:");
         String id = scanner.nextLine();
