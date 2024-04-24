@@ -16,25 +16,42 @@ import com.google.gson.Gson;
  */
 public class Customer {
     private String id;
-    private String firstName;
-    private String lastName;
-    private String city;
-    private String email;
+    private String fullName;
+    private String dateOfBirth;
+    private String phoneNumber;
+    private String emailAddress;
+    private String existingMedicalConditions;
+    private String allergies;
+    private String healthIssuesOrSymptoms;
+    private String insuranceProvider;
+    private String primaryCarePhysician;
 
     /**
      * Constructs a new Customer object with the specified attributes.
      * @param id The ID of the customer.
-     * @param firstName The first name of the customer.
-     * @param lastName The last name of the customer.
-     * @param city The city of the customer.
-     * @param email The email of the customer.
+     * @param fullName The full name of the customer.
+     * @param dateOfBirth The date of birth of the customer.
+     * @param phoneNumber The phone number of the customer.
+     * @param emailAddress The email address of the customer.
+     * @param existingMedicalConditions Any existing medical conditions of the customer.
+     * @param allergies Any allergies of the customer.
+     * @param healthIssuesOrSymptoms Any health issues or symptoms of the customer.
+     * @param insuranceProvider The insurance provider of the customer.
+     * @param primaryCarePhysician The primary care physician of the customer.
      */
-    public Customer(String id, String firstName, String lastName, String city, String email) {
+    public Customer(String id, String fullName, String dateOfBirth, String phoneNumber, String emailAddress,
+                    String existingMedicalConditions, String allergies, String healthIssuesOrSymptoms,
+                    String insuranceProvider, String primaryCarePhysician) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.city = city;
-        this.email = email;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.existingMedicalConditions = existingMedicalConditions;
+        this.allergies = allergies;
+        this.healthIssuesOrSymptoms = healthIssuesOrSymptoms;
+        this.insuranceProvider = insuranceProvider;
+        this.primaryCarePhysician = primaryCarePhysician;
     }
 
     /**
@@ -43,10 +60,15 @@ public class Customer {
     public void displayCustomerDetails() {
         System.out.println("Customer Details:");
         System.out.println("ID: " + id);
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("City: " + city);
-        System.out.println("Email: " + email);
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Date of Birth: " + dateOfBirth);
+        System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Email Address: " + emailAddress);
+        System.out.println("Existing Medical Conditions: " + existingMedicalConditions);
+        System.out.println("Allergies: " + allergies);
+        System.out.println("Health Issues or Symptoms: " + healthIssuesOrSymptoms);
+        System.out.println("Insurance Provider: " + insuranceProvider);
+        System.out.println("Primary Care Physician: " + primaryCarePhysician);
     }
 
     /**
@@ -57,10 +79,15 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id='" + id + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", city='" + city + '\'' +
-                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", existingMedicalConditions='" + existingMedicalConditions + '\'' +
+                ", allergies='" + allergies + '\'' +
+                ", healthIssuesOrSymptoms='" + healthIssuesOrSymptoms + '\'' +
+                ", insuranceProvider='" + insuranceProvider + '\'' +
+                ", primaryCarePhysician='" + primaryCarePhysician + '\'' +
                 '}';
     }
 

@@ -25,17 +25,28 @@ public class Main {
         System.out.println("Customer Creation:");
         System.out.println("Enter ID of the Customer:");
         String id = scanner.nextLine(); // ID of the customer
-        System.out.println("Enter First Name of the Customer:");
-        String first = scanner.nextLine(); // First name of the customer
-        System.out.println("Enter Last Name of the Customer:");
-        String last = scanner.nextLine(); // Last name of the customer
-        System.out.println("Enter City:");
-        String city = scanner.nextLine(); // City of the customer
-        System.out.println("Enter Customer Email:");
-        String email = scanner.nextLine(); // Email of the customer
+        System.out.println("Enter Full Name of the Customer:");
+        String fullName = scanner.nextLine(); // Full name of the customer
+        System.out.println("Enter Date of Birth of the Customer:");
+        String dateOfBirth = scanner.nextLine(); // Date of birth of the customer
+        System.out.println("Enter Phone Number of the Customer:");
+        String phoneNumber = scanner.nextLine(); // Phone number of the customer
+        System.out.println("Enter Email Address of the Customer:");
+        String emailAddress = scanner.nextLine(); // Email address of the customer
+        System.out.println("Enter Existing Medical Conditions of the Customer:");
+        String existingMedicalConditions = scanner.nextLine(); // Existing medical conditions of the customer
+        System.out.println("Enter Allergies of the Customer:");
+        String allergies = scanner.nextLine(); // Allergies of the customer
+        System.out.println("Enter Health Issues or Symptoms of the Customer:");
+        String healthIssuesOrSymptoms = scanner.nextLine(); // Health issues or symptoms of the customer
+        System.out.println("Enter Insurance Provider of the Customer:");
+        String insuranceProvider = scanner.nextLine(); // Insurance provider of the customer
+        System.out.println("Enter Primary Care Physician of the Customer:");
+        String primaryCarePhysician = scanner.nextLine(); // Primary care physician of the customer
 
         // Create a new customer object
-        Customer customer = new Customer(id, first, last, city, email);
+        Customer customer = new Customer(id, fullName, dateOfBirth, phoneNumber, emailAddress,
+                existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician);
 
         // Serialize the customer object to JSON
         String customerJson = customer.toJSON();
