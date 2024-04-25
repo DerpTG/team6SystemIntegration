@@ -49,7 +49,7 @@ Navigate to the project directory and run the following Maven command to build t
 ## Usage
 To use this system:
 1. **Start the Application:** Run the `Main` class to begin.
-2. **Start the Reciever** Run the `RabbitGet` class. 
+2. **Start the Reciever:** Run the `RabbitGet` class. 
 2. **Input Customer Details:** Follow the on-screen prompts to enter customer information.
 3. **View Processed Output:** After the data goes through the encrypted queuing system, view the output on the console.
 
