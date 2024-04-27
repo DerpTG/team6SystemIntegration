@@ -53,7 +53,7 @@ public class Patient {
         this.primaryCarePhysician = primaryCarePhysician;
     }
     /**
-     * Display customer details.
+     * Display Patient details.
      */
     public void displayPatientDetails() {
         System.out.println("Patient Details:");
