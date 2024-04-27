@@ -16,7 +16,7 @@
 - [Acknowledgments](#acknowledgments)
 
 ## Project Overview
-This project, developed for IST 242, showcases system integration using RabbitMQ for message queuing, JSON for data serialization, and AES encryption for securing data. The system manages and processes customer details through various stages: input, encryption, serialization, queuing, deserialization, decryption, and display.
+This project, developed for IST 242, showcases system integration using RabbitMQ for message queuing, JSON for data serialization, and AES encryption for securing data. The system manages and processes patient details through various stages: input, encryption, serialization, queuing, deserialization, decryption, and display.
 
 ## Technologies Used
 - Java
@@ -44,20 +44,20 @@ Navigate to the project directory and run the following Maven command to build t
 
 ## Running the Application
 1. Ensure RabbitMQ server is running and accessible.
-2. Start the application by running the `Main` class. This will prompt for customer details and process them through the system.
+2. Start the application by running the `Main` class. This will prompt for patient details and process them through the system.
 
 ## Usage
 To use this system:
 1. **Start the Application:** Run the `Main` class to begin.
 2. **Start the Reciever:** Run the `RabbitGet` class. 
-2. **Input Customer Details:** Follow the on-screen prompts to enter customer information.
+2. **Input Patient Details:** Follow the on-screen prompts to enter patient information.
 3. **View Processed Output:** After the data goes through the encrypted queuing system, view the output on the console.
 
 ## Features
-- **Customer Data Handling:** Input, process, and manage customer data securely.
-- **AES Encryption/Decryption:** Secure customer data using AES encryption before sending over the network.
+- **Patient Data Handling:** Input, process, and manage patient data securely.
+- **AES Encryption/Decryption:** Secure patient data using AES encryption before sending over the network.
 - **RabbitMQ Integration:** Use RabbitMQ for message queuing between different stages of the system.
-- **JSON Serialization/Deserialization:** Convert customer objects to/from JSON format for easy transmission and storage.
+- **JSON Serialization/Deserialization:** Convert patient objects to/from JSON format for easy transmission and storage.
 
 ## Authors
 - Felix Naroditskiy

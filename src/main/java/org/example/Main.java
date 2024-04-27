@@ -4,15 +4,51 @@
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/22/2024
+ * Last Date Changed: 4/27/2024
  * Rev: 1.0
  */
-
 package org.example;
-
 import java.util.Scanner;
-
 public class Main {
+    // Scanner object to read input from the console
+    private static Scanner scanner = new Scanner(System.in);
+
+    // Declare the variables to store the patient details
+    private static String id, fullName, dateOfBirth, phoneNumber, emailAddress, existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician;
+
+    // List to store the patient objects
+    private static Patient patient;
+
+    /**
+     * Input form for the patient.
+     */
+    public static void inputForm(){
+        System.out.println("Patient Form:"); // Patient form
+        System.out.print("Enter ID of the Patient:");
+        id = scanner.nextLine(); // ID of the patient
+        System.out.print("Enter Full Name of the Patient:");
+        fullName = scanner.nextLine(); // Full name of the patient
+        System.out.print("Enter Date of Birth of the Patient:");
+        dateOfBirth = scanner.nextLine(); // Date of birth of the patient
+        System.out.print("Enter Phone Number of the Patient:");
+        phoneNumber = scanner.nextLine(); // Phone number of the patient
+        System.out.print("Enter Email Address of the Patient:");
+        emailAddress = scanner.nextLine(); // Email address of the patient
+        System.out.print("Enter Existing Medical Conditions of the Patient:");
+        existingMedicalConditions = scanner.nextLine(); // Existing medical conditions of the patient
+        System.out.print("Enter Allergies of the Patient:");
+        allergies = scanner.nextLine(); // Allergies of the patient
+        System.out.print("Enter Health Issues or Symptoms of the Patient:");
+        healthIssuesOrSymptoms = scanner.nextLine(); // Health issues or symptoms of the patient
+        System.out.print("Enter Insurance Provider of the Patient:");
+        insuranceProvider = scanner.nextLine(); // Insurance provider of the patient
+        System.out.print("Enter Primary Care Physician of the Patient:");
+        primaryCarePhysician = scanner.nextLine(); // Primary care physician of the patient
+
+        //Add the patient to the list of patients
+        patient = new Patient(id, fullName, dateOfBirth, phoneNumber, emailAddress,
+                existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician);
+    }
 
     /**
      * The main method is the entry point of the application.
@@ -20,56 +56,46 @@ public class Main {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Customer Creation:");
-        System.out.println("Enter ID of the Customer:");
-        String id = scanner.nextLine(); // ID of the customer
-        System.out.println("Enter Full Name of the Customer:");
-        String fullName = scanner.nextLine(); // Full name of the customer
-        System.out.println("Enter Date of Birth of the Customer:");
-        String dateOfBirth = scanner.nextLine(); // Date of birth of the customer
-        System.out.println("Enter Phone Number of the Customer:");
-        String phoneNumber = scanner.nextLine(); // Phone number of the customer
-        System.out.println("Enter Email Address of the Customer:");
-        String emailAddress = scanner.nextLine(); // Email address of the customer
-        System.out.println("Enter Existing Medical Conditions of the Customer:");
-        String existingMedicalConditions = scanner.nextLine(); // Existing medical conditions of the customer
-        System.out.println("Enter Allergies of the Customer:");
-        String allergies = scanner.nextLine(); // Allergies of the customer
-        System.out.println("Enter Health Issues or Symptoms of the Customer:");
-        String healthIssuesOrSymptoms = scanner.nextLine(); // Health issues or symptoms of the customer
-        System.out.println("Enter Insurance Provider of the Customer:");
-        String insuranceProvider = scanner.nextLine(); // Insurance provider of the customer
-        System.out.println("Enter Primary Care Physician of the Customer:");
-        String primaryCarePhysician = scanner.nextLine(); // Primary care physician of the customer
-
-        // Create a new customer object
-        Customer customer = new Customer(id, fullName, dateOfBirth, phoneNumber, emailAddress,
-                existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician);
-
-        // Serialize the customer object to JSON
-        String customerJson = customer.toJSON();
-        System.out.println("\nCustomer JSON: " + customerJson);
-        // Deserialize the JSON string to a Customer object
-        Customer deserializedCustomer = Customer.fromJSON(customerJson);
-        System.out.println("Deserialized Customer:" + deserializedCustomer);
-        // Encrypt the customer JSON string
-        String encryptedCustomerJson = AES.encrypt(customerJson);
-        System.out.println("\nEncrypted Customer JSON: " + encryptedCustomerJson);
-        // Decrypt the encrypted customer JSON string
-        String decryptedCustomerJson = AES.decrypt(encryptedCustomerJson);
-        System.out.println("Decrypted Customer JSON: " + decryptedCustomerJson);
-
-        // Get Customer toString from deserializedCustomer
-        System.out.println("\nCustomer toString: " + deserializedCustomer.toString());
-
-        // Send the encrypted customer JSON string to the RabbitMQ queue
-        RabbitSend rabbitSend = new RabbitSend(encryptedCustomerJson);
-        try {
-            rabbitSend.sendToQueue();
-        } catch (Exception e) {
-            e.printStackTrace();
+        // Welcome message
+        System.out.println("Welcome to the Patient Information System!");
+        // While loop to keep the application running
+        while (true) {
+            // Display the menu
+            System.out.println("\nMenu:");
+            System.out.println("1. Enter Patient Information");
+            System.out.println("2. Exit");
+            System.out.print("Enter your choice: ");
+            // Read the user's choice
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+            // Switch statement to handle the user's choice
+            switch (choice) {
+                case 1:
+                    // Call the inputForm method to input the patient details
+                    inputForm();
+                    // Serialize the patient object to JSON
+                    String customerJson = patient.toJSON();
+                    System.out.println("\nPatient JSON: " + customerJson);
+                    // Encrypt the patient JSON string
+                    String encryptedCustomerJson = AES.encrypt(customerJson);
+                    System.out.println("\nEncrypted Patient JSON: " + encryptedCustomerJson);
+                    // Send the encrypted patient JSON string to the RabbitMQ queue
+                    RabbitSend rabbitSend = new RabbitSend(encryptedCustomerJson);
+                    try {
+                        rabbitSend.sendToQueue();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    // Exit the application
+                    System.out.println("Thank you for using the Patient Information System!");
+                    System.exit(0);
+                    break;
+                default:
+                    // Display an error message for an invalid choice
+                    System.out.println("Error: Invalid choice. Please try again.");
+            }
         }
     }
 }

@@ -3,13 +3,12 @@
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/23/2024
+ * Last Date Changed: 4/27/2024
  * Rev: 1.1
  */
 
 package org.example;
 
-import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -26,7 +25,7 @@ public class RabbitGet {
 
     /**
      * Initializes and starts listening for messages on the specified queue. Upon receiving a message,
-     * it deserializes the JSON into a Customer object and displays its details.
+     * it deserializes the JSON into a Patient object and displays its details.
      *
      * @throws Exception If there is an issue establishing a connection to RabbitMQ, creating a channel,
      * or declaring a queue.
@@ -39,20 +38,19 @@ public class RabbitGet {
         channel = connection.createChannel();
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+        System.out.println("Patient Details ... Waiting for Messages ...");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String encryptedMessage = new String(delivery.getBody(), "UTF-8");
             // Decrypt the message using the AES
             String decryptedMessage = AES.decrypt(encryptedMessage);
-            // Deserialize the JSON string to Customer object
-            Customer customer = Customer.fromJSON(decryptedMessage);
-            // Use the displayCustomerDetails method to print Customer details
-            customer.displayCustomerDetails();
+            // Deserialize the JSON string to Patient object
+            Patient patient = Patient.fromJSON(decryptedMessage);
+            // Use the displayCustomerDetails method to print Patient details
+            patient.displayPatientDetails();
         };
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
     }
-
     /**
      * Closes the channel and the connection to RabbitMQ when no longer needed, releasing resources.
      *
@@ -66,7 +64,6 @@ public class RabbitGet {
             connection.close();
         }
     }
-
     /**
      * Main method to start receiving messages from RabbitMQ.
      * @param args Command line arguments.

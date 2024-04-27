@@ -3,18 +3,17 @@
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/22/2024
+ * Last Date Changed: 4/27/2024
  * Rev: 1.0
  */
 
 package org.example;
-
 import com.google.gson.Gson;
 
 /**
  * Represents a customer entity.
  */
-public class Customer {
+public class Patient {
     private String id;
     private String fullName;
     private String dateOfBirth;
@@ -27,7 +26,7 @@ public class Customer {
     private String primaryCarePhysician;
 
     /**
-     * Constructs a new Customer object with the specified attributes.
+     * Constructs a new Patient object with the specified attributes.
      * @param id The ID of the customer.
      * @param fullName The full name of the customer.
      * @param dateOfBirth The date of birth of the customer.
@@ -39,9 +38,9 @@ public class Customer {
      * @param insuranceProvider The insurance provider of the customer.
      * @param primaryCarePhysician The primary care physician of the customer.
      */
-    public Customer(String id, String fullName, String dateOfBirth, String phoneNumber, String emailAddress,
-                    String existingMedicalConditions, String allergies, String healthIssuesOrSymptoms,
-                    String insuranceProvider, String primaryCarePhysician) {
+    public Patient(String id, String fullName, String dateOfBirth, String phoneNumber, String emailAddress,
+                   String existingMedicalConditions, String allergies, String healthIssuesOrSymptoms,
+                   String insuranceProvider, String primaryCarePhysician) {
         this.id = id;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -53,12 +52,11 @@ public class Customer {
         this.insuranceProvider = insuranceProvider;
         this.primaryCarePhysician = primaryCarePhysician;
     }
-
     /**
      * Display customer details.
      */
-    public void displayCustomerDetails() {
-        System.out.println("Customer Details:");
+    public void displayPatientDetails() {
+        System.out.println("Patient Details:");
         System.out.println("ID: " + id);
         System.out.println("Full Name: " + fullName);
         System.out.println("Date of Birth: " + dateOfBirth);
@@ -70,14 +68,13 @@ public class Customer {
         System.out.println("Insurance Provider: " + insuranceProvider);
         System.out.println("Primary Care Physician: " + primaryCarePhysician);
     }
-
     /**
      * Returns a string representation of the customer.
      * @return A string representation of the customer.
      */
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Patient{" +
                 "id='" + id + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
@@ -90,7 +87,6 @@ public class Customer {
                 ", primaryCarePhysician='" + primaryCarePhysician + '\'' +
                 '}';
     }
-
     /**
      * Converts the customer object to a JSON string.
      * @return JSON string representing the customer object.
@@ -99,14 +95,13 @@ public class Customer {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
-
     /**
      * Constructs a customer object from a JSON string.
      * @param json JSON string representing the customer object.
-     * @return Customer object constructed from the JSON string.
+     * @return Patient object constructed from the JSON string.
      */
-    public static Customer fromJSON(String json) {
+    public static Patient fromJSON(String json) {
         Gson gson = new Gson();
-        return gson.fromJson(json, Customer.class);
+        return gson.fromJson(json, Patient.class);
     }
 }
