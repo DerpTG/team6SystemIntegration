@@ -56,7 +56,7 @@ public class Patient {
      * Display Patient details.
      */
     public void displayPatientDetails() {
-        System.out.println("Patient Details:");
+        System.out.println("Patient Details");
         System.out.println("ID: " + id);
         System.out.println("Full Name: " + fullName);
         System.out.println("Date of Birth: " + dateOfBirth);
