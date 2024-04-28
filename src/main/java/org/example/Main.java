@@ -4,8 +4,8 @@
  * Course: IST 242
  * Author: Felix Naroditskiy, Eyan Jaffery, Lasha Kaliashvili, Michael Litka, Houde Yu
  * Date Developed: 4/19/2024
- * Last Date Changed: 4/27/2024
- * Rev: 1.0
+ * Last Date Changed: 4/28/2024
+ * Rev: 1.1
  */
 package org.example;
 import java.util.Scanner;
@@ -16,11 +16,11 @@ public class Main {
     // Declare the variables to store the patient details
     private static String id, fullName, dateOfBirth, phoneNumber, emailAddress, existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician;
 
-    // List to store the patient objects
+    // Variable to store the patient object
     private static Patient patient;
 
     /**
-     * Input form for the patient.
+     * Input form for entering a single patient's data.
      */
     public static void inputForm(){
         System.out.println("Patient Form:"); // Patient form
@@ -45,7 +45,7 @@ public class Main {
         System.out.print("Enter Primary Care Physician of the Patient:");
         primaryCarePhysician = scanner.nextLine(); // Primary care physician of the patient
 
-        //Add the patient to the list of patients
+        // Create the patient object using the entered data
         patient = new Patient(id, fullName, dateOfBirth, phoneNumber, emailAddress,
                 existingMedicalConditions, allergies, healthIssuesOrSymptoms, insuranceProvider, primaryCarePhysician);
     }
