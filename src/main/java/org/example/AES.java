@@ -16,7 +16,10 @@ import org.apache.commons.codec.binary.Base64;
 import javax.crypto.Cipher;
 
 public class AES {
-    // Method to convert Base64 string key to SecretKeySpec
+    /**
+     * Method to retrieve key from the .env file and convert it to SecretKeySpec object
+     * @return  Encryption key as a SecretKeySpec object
+     */
     public static SecretKeySpec getKeySpec() {
         // Retrieve encryption key from the .env file
         Dotenv dotenv = Dotenv.load();
