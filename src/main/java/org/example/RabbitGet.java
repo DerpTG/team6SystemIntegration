@@ -21,7 +21,7 @@ public class RabbitGet {
     /**
      * The name of the RabbitMQ queue from which customer data messages are received.
      */
-    private final static String QUEUE_NAME = "customerDetailsQueue";
+    private final static String QUEUE_NAME = "patientDetailsQueue";
     private Connection connection;
     private Channel channel;
 
@@ -73,7 +73,6 @@ public class RabbitGet {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        // While loop to keep the application running
         boolean run = true;
         while (run) {
             Scanner scanner = new Scanner(System.in); // Create a Scanner object
