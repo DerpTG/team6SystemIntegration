@@ -14,6 +14,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import java.util.Scanner;
 
 public class RabbitGet {
 
@@ -32,15 +33,15 @@ public class RabbitGet {
      * or declaring a queue.
      */
     public void startReceiving() throws Exception {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        ConnectionFactory factory = new ConnectionFactory(); // Create a new ConnectionFactory object
+        factory.setHost("localhost"); // Set the host.
         // Open the connection and create a channel
         connection = factory.newConnection();
         channel = connection.createChannel();
-
+        // Declare the queue
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println("Patient Details ... Waiting for Messages ...");
-
+        // Callback to handle incoming messages
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String encryptedMessage = new String(delivery.getBody(), "UTF-8");
             // Decrypt the message using the AES
@@ -65,16 +66,57 @@ public class RabbitGet {
             connection.close();
         }
     }
+
     /**
-     * Main method to start receiving messages from RabbitMQ.
-     * @param args Command line arguments.
+     * The main method is the entry point of the application.
+     *
+     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        RabbitGet rabbitGet = new RabbitGet();
-        try {
-            rabbitGet.startReceiving();
-        } catch (Exception e) {
-            e.printStackTrace();
+        // While loop to keep the application running
+        boolean run = true;
+        while (run) {
+            Scanner scanner = new Scanner(System.in); // Create a Scanner object
+            System.out.println("Menu: ");
+            System.out.println("1. Start Receiving Messages");
+            System.out.println("2. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt(); // Read the user's choice
+            scanner.nextLine(); // Consume the newline character
+            RabbitGet rabbitGet = new RabbitGet(); // Create a new RabbitGet object
+            // Switch statement to handle the user's choice
+            try {
+                switch (choice) {
+                    case 1:
+                        // Start receiving messages
+                        rabbitGet.startReceiving();
+                        run = false; // Set run to false to exit the while loop
+                        System.out.println("Enter 2 to stop receiving messages."); // Prompt the user to stop receiving messages
+                        while (true) {
+                            int stopChoice = scanner.nextInt(); // Read the user's choice
+                            scanner.nextLine(); // Consume the newline character
+                            // If the user chooses to stop receiving messages, call the stopReceiving method and exit the application
+                            if (stopChoice == 2) {
+                                rabbitGet.stopReceiving(); // Stop receiving messages
+                                scanner.close(); // Close the scanner
+                                System.exit(0); // Exit the application
+                                break;
+                            } else {
+                                System.out.println("Error: Invalid choice. Please try again.");
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Exiting the application."); // Exit the application
+                        scanner.close(); // Close the scanner
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Error: Invalid choice. Please try again.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
