@@ -25,6 +25,7 @@ public class RabbitGet {
     private Connection connection;
     private Channel channel;
 
+
     /**
      * Initializes and starts listening for messages on the specified queue. Upon receiving a message,
      * it deserializes the JSON into a Patient object and displays its details.
