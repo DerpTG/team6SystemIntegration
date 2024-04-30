@@ -24,7 +24,7 @@ public class Main {
     /**
      * Input form for entering a single patient's data.
      */
-    public static void inputForm(){
+    private static void inputForm(){
         System.out.println("Patient Form:"); // Patient form
         System.out.print("Enter ID of the Patient:");
         id = scanner.nextLine(); // ID of the patient
