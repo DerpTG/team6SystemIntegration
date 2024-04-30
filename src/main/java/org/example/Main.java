@@ -80,7 +80,6 @@ public class Main {
                     System.out.println("\nPatient JSON: " + customerJson);
                     // Encrypt the patient JSON string
                     String encryptedCustomerJson = AES.encrypt(customerJson);
-                    System.out.println("\nEncrypted Patient JSON: " + encryptedCustomerJson);
                     // Send the encrypted patient JSON string to the RabbitMQ queue
                     RabbitSend rabbitSend = new RabbitSend(encryptedCustomerJson);
                     try {
