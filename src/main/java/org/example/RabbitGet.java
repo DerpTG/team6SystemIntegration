@@ -17,6 +17,7 @@ import com.rabbitmq.client.DeliverCallback;
 import java.util.Scanner;
 
 public class RabbitGet {
+    private static Scanner scanner = new Scanner(System.in);
 
     /**
      * The name of the RabbitMQ queue from which customer data messages are received.
@@ -69,54 +70,61 @@ public class RabbitGet {
     }
 
     /**
-     * The main method is the entry point of the application.
+     * Displays the menu and reads the user's choice.
      *
-     * @param args Command-line arguments.
+     * @return The user's choice.
      */
-    public static void main(String[] args) {
+    private static int menu() {
         System.out.println("Welcome to the Patient Information Receiving System!");
         System.out.println("Menu: ");
         System.out.println("1. Start Receiving Messages");
         System.out.println("2. Exit");
         System.out.print("Enter your choice: ");
-        while (true) {
-            Scanner scanner = new Scanner(System.in); // Create a Scanner object
-            int choice = scanner.nextInt(); // Read the user's choice
-            scanner.nextLine(); // Consume the newline character
-            RabbitGet rabbitGet = new RabbitGet(); // Create a new RabbitGet object
-            // Switch statement to handle the user's choice
-            try {
-                switch (choice) {
-                    case 1:
-                        // Start receiving messages
-                        rabbitGet.startReceiving();
-                        System.out.println("Enter 2 to stop receiving messages."); // Prompt the user to stop receiving messages
-                        while (true) {
-                            int stopChoice = scanner.nextInt(); // Read the user's choice
-                            scanner.nextLine(); // Consume the newline character
-                            // If the user chooses to stop receiving messages, call the stopReceiving method and exit the application
-                            if (stopChoice == 2) {
-                                System.out.println("Stopping the Receiver Application...");
-                                rabbitGet.stopReceiving(); // Stop receiving messages
-                                scanner.close(); // Close the scanner
-                                System.exit(0); // Exit the application
-                                break;
-                            } else {
-                                System.out.println("Error: Invalid choice. Please try again.");
-                            }
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        return choice;
+    }
+
+    /**
+     * The main method is the entry point of the application.
+     *
+     * @param args Command-line arguments.
+     */
+    public static void main(String[] args) {
+        int choice = menu(); // Display the menu and read the user's choice
+        RabbitGet rabbitGet = new RabbitGet(); // Create a new RabbitGet object
+        // Switch statement to handle the user's choice
+        try {
+            switch (choice) {
+                case 1:
+                    // Start receiving messages
+                    rabbitGet.startReceiving();
+                    System.out.println("Enter 2 to stop receiving messages."); // Prompt the user to stop receiving messages
+                    while (true) {
+                        int stopChoice = scanner.nextInt(); // Read the user's choice
+                        scanner.nextLine(); // Consume the newline character
+                        // If the user chooses to stop receiving messages, call the stopReceiving method and exit the application
+                        if (stopChoice == 2) {
+                            System.out.println("Stopping the Receiver Application...");
+                            rabbitGet.stopReceiving(); // Stop receiving messages
+                            scanner.close(); // Close the scanner
+                            System.exit(0); // Exit the application
+                            break;
+                        } else {
+                            System.out.println("Error: Invalid choice. Please try again.");
                         }
-                        break;
-                    case 2:
-                        System.out.println("Exiting the application."); // Exit the application
-                        scanner.close(); // Close the scanner
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Error: Invalid choice. Please try again.");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    System.out.println("Exiting the application."); // Exit the application
+                    scanner.close(); // Close the scanner
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Error: Invalid choice. Please try again.");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
