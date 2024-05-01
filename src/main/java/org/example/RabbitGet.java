@@ -127,8 +127,6 @@ public class RabbitGet {
                     scanner.close(); // Close the scanner
                     System.exit(0);
                     break;
-                default:
-                    System.out.println("Error: Invalid choice. Please try again.");
             }
         } catch (Exception e) {
             e.printStackTrace();
