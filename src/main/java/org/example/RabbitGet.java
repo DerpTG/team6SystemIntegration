@@ -18,15 +18,12 @@ import java.util.Scanner;
 
 public class RabbitGet {
     private static Scanner scanner = new Scanner(System.in);
-
     /**
      * The name of the RabbitMQ queue from which customer data messages are received.
      */
     private final static String QUEUE_NAME = "patientDetailsQueue";
     private Connection connection;
     private Channel channel;
-
-
     /**
      * Initializes and starts listening for messages on the specified queue. Upon receiving a message,
      * it deserializes the JSON into a Patient object and displays its details.
@@ -68,7 +65,6 @@ public class RabbitGet {
             connection.close();
         }
     }
-
     /**
      * Displays the menu and reads the user's choice.
      *
