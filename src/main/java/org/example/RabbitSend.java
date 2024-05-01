@@ -18,7 +18,7 @@ public class RabbitSend {
     /**
      * The name of the RabbitMQ queue to which customer data messages are sent.
      */
-    private final static String QUEUE_NAME = "customerDetailsQueue";
+    private final static String QUEUE_NAME = "patientDetailsQueue";
     private String customerJson;
 
     /**
