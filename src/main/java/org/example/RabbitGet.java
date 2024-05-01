@@ -76,13 +76,20 @@ public class RabbitGet {
      */
     private static int menu() {
         System.out.println("Welcome to the Patient Information Receiving System!");
-        System.out.println("Menu: ");
-        System.out.println("1. Start Receiving Messages");
-        System.out.println("2. Exit");
-        System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        return choice;
+        while (true) {
+            // Display the menu
+            System.out.println("Menu: ");
+            System.out.println("1. Start Receiving Messages");
+            System.out.println("2. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            if (choice == 1 || choice == 2) {
+                return choice;
+            } else {
+                System.out.println("Error: Invalid choice. Please try again.");
+            }
+        }
     }
 
     /**
